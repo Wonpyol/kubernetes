@@ -1,4 +1,16 @@
 1. os: MacOS Monterey 12.6
 2. tool
     vagrant v2.2.9
-    oracle virtualbox 6.1.42
+    oracle virtualbox 6.1.30
+
+
+3. 노드간 통신 안될 때
+sudo vi /etc/sysconfig/kubelet
+#추가
+KUBELET_EXTRA_ARGS=--node-ip=<노드의 호스트 전용 IP 주소>
+# kubelet 프로세스 재시작
+$ sudo systemctl daemon-reload
+$ sudo systemctl restart kubelet
+
+# kubelet 프로세스 조회
+$ sudo systemctl status kubelet
